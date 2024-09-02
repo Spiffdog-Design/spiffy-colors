@@ -8,7 +8,7 @@ on:
 
 jobs:
     build:
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
             - name: Use Node.js 14.x
@@ -21,7 +21,7 @@ jobs:
 
     package:
         needs: [build]
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
             - name: Use Node.js 14.x
@@ -43,7 +43,7 @@ jobs:
     publish:
         name: 'Publish to GitHub Packages'
         needs: [package]
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-latest
         if: github.repository_owner == 'tgoyer'
         steps:
             - name: Upload
