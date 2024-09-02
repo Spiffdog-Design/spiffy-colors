@@ -1,5 +1,5 @@
 {
-  "name": "@spiffdog/colors",
+  "name": "@spiffdog/spiffy-colors",
   "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
