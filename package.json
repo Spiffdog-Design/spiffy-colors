@@ -1,6 +1,6 @@
 {
   "name": "@spiffdog/spiffy-colors",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/types/index.d.ts",
@@ -8,8 +8,8 @@
   "scripts": {
     "build": "npm run clean && npm i && npx rollup -c && npm run build-css-modules",
     "build-css-modules": "node ./scripts/build-css-modules.js",
-    "prepublishOnly": "yarn build",
-    "postpublish": "yarn clean",
+    "prepublishOnly": "npm run build",
+    "postpublish": "npm run clean",
     "clean": "git clean -fdX && npx rimraf ./dist"
   },
   "keywords": [
