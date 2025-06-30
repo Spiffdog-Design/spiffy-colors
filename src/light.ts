@@ -1,4 +1,6 @@
-export const light = {
+import { Theme } from "./types/Color";
+
+export const light: Theme = {
   gray: {
     1: "#fcfcfc",
     2: "#f9f9f9",
