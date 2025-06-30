@@ -1,4 +1,4 @@
-[Documentation](https://spiffdog-design.github.io/spiffy-components)
+[Documentation](https://spiffdog-design.github.io/spiffy-colors/)
 
 # Typescript 
 
