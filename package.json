@@ -8,10 +8,10 @@
     "scripts": {
         "build": "npm run clean && npm i && npx rollup -c && npm run build-css-modules",
         "build-css-modules": "node ./scripts/build-css-modules.js",
+        "clean": "git clean -fdX && npx rimraf ./dist",
+        "dev": "storybook dev -p 6006",
         "prepublishOnly": "npm run build",
         "postpublish": "npm run clean",
-        "clean": "git clean -fdX && npx rimraf ./dist",
-        "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build"
     },
     "keywords": [
