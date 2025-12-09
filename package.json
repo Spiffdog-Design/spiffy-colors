@@ -1,12 +1,12 @@
 {
     "name": "@spiffdog/spiffy-colors",
-    "version": "1.3.0",
+    "version": "2.0.0",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
     "types": "dist/types/index.d.ts",
     "license": "MIT",
     "scripts": {
-        "build": "npm run clean && npm i && npx rollup -c && npm run build-css-modules",
+        "build": "npx rollup -c && npm run build-css-modules",
         "build-css-modules": "node ./scripts/build-css-modules.js",
         "clean": "git clean -fdX && npx rimraf ./dist",
         "dev": "storybook dev -p 6006",
