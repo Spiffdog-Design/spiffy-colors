@@ -8,7 +8,16 @@ export interface ThemeViewerProps {
 
 export const ThemeViewer = ({ themeName, theme }: ThemeViewerProps) => {
     return (
-        <div style={{ height: 450 }}>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 16,
+                padding: 16,
+                backgroundColor: theme.gray[12],
+                color: theme.gray[1],
+            }}
+        >
             {Object.keys(theme).map((key) => (
                 <PaletteViewer themeName={themeName} name={key} palette={theme[key]} />
             ))}

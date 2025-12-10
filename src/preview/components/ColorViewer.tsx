@@ -23,7 +23,16 @@ export const ColorViewer = ({ color, index, name, themeName }: ColorViewerProps)
                     }}
                 >
                     <div style={{ background: `url(${imageFile})` }}>
-                        <div style={{ height: 40, width: 40, backgroundColor: color }}></div>
+                        <div
+                            style={{
+                                height: 40,
+                                width: 40,
+                                backgroundColor: color,
+                                border: `1px solid oklab(from ${color} ${
+                                    themeName === 'dark' ? 'calc(l + .1)' : 'calc(l - .075)'
+                                } a b)`,
+                            }}
+                        ></div>
                     </div>
                     <div
                         style={{
