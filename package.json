@@ -11,7 +11,6 @@
         "clean": "git clean -fdX && npx rimraf ./dist",
         "dev": "storybook dev -p 6006",
         "prepublishOnly": "npm run build",
-        "postpublish": "npm run clean",
         "build-storybook": "storybook build"
     },
     "keywords": [
