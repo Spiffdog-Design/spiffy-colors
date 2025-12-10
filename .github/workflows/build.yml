@@ -1,12 +1,8 @@
 name: Publish to npm
 
 on:
-  release:
-    types: [published]
-  # Or use push to main/tags:
-  # push:
-  #   tags:
-  #     - 'v*'
+  push:
+    branches: [trunk]
 
 # Important: These permissions are required for OIDC
 permissions:
