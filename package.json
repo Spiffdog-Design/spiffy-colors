@@ -5,6 +5,10 @@
     "module": "dist/index.mjs",
     "types": "dist/types/index.d.ts",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Spiffdog-Design/spiffy-colors"
+    },
     "scripts": {
         "build": "npx rollup -c && npm run build-css-modules",
         "build-css-modules": "node ./scripts/build-css-modules.js",
