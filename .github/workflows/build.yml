@@ -41,6 +41,9 @@ jobs:
           echo "Package name: $(node -p "require('./package.json').name")"
           echo "Package version: $(node -p "require('./package.json').version")"
       
+      - name: Debug - Dry run publish
+        run: npm publish --dry-run --access public
+        
       # NO NODE_AUTH_TOKEN, NO --provenance flag needed
       - name: Publish
         run: npm publish --access public
