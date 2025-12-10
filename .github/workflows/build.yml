@@ -12,8 +12,6 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    # Only include if you set an environment name in npm:
-    # environment: npm
     
     steps:
       - uses: actions/checkout@v4
@@ -22,6 +20,10 @@ jobs:
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
+      
+      # CRITICAL: Upgrade to latest npm for OIDC support
+      - name: Upgrade npm
+        run: npm install -g npm@latest
       
       - name: Install dependencies
         run: npm ci
