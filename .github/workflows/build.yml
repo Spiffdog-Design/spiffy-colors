@@ -4,14 +4,15 @@ on:
   push:
     branches: [trunk]
 
-# Important: These permissions are required for OIDC
 permissions:
   contents: read
-  id-token: write
+  id-token: write  # CRITICAL for OIDC
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # Only uncomment if you set an environment name in npm:
+    # environment: npm
     
     steps:
       - uses: actions/checkout@v4
@@ -21,8 +22,8 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
       
-      # CRITICAL: Upgrade to latest npm for OIDC support
-      - name: Upgrade npm
+      # CRITICAL: npm 11.5.1+ required for trusted publishing
+      - name: Update npm
         run: npm install -g npm@latest
       
       - name: Install dependencies
@@ -31,5 +32,6 @@ jobs:
       - name: Build
         run: npm run build
       
-      - name: Publish to npm
+      # NO NODE_AUTH_TOKEN, NO --provenance flag needed
+      - name: Publish
         run: npm publish --access public
