@@ -11,8 +11,6 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    # Only uncomment if you set an environment name in npm:
-    # environment: npm
     
     steps:
       - uses: actions/checkout@v4
@@ -26,11 +24,22 @@ jobs:
       - name: Update npm
         run: npm install -g npm@latest
       
+      - name: Debug - Check npm version and OIDC
+        run: |
+          npm --version
+          echo "OIDC Token URL available: ${ACTIONS_ID_TOKEN_REQUEST_URL:+YES}"
+          echo "OIDC Token URL: ${ACTIONS_ID_TOKEN_REQUEST_URL:-NOT SET}"
+      
       - name: Install dependencies
         run: npm ci
       
       - name: Build
         run: npm run build
+      
+      - name: Debug - Check package.json
+        run: |
+          echo "Package name: $(node -p "require('./package.json').name")"
+          echo "Package version: $(node -p "require('./package.json').version")"
       
       # NO NODE_AUTH_TOKEN, NO --provenance flag needed
       - name: Publish
