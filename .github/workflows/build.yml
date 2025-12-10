@@ -1,38 +1,39 @@
-name: Build and Deploy
+name: Publish to npm
 
 on:
-  push:
-    branches: [trunk]
+  release:
+    types: [published]
+  # Or use push to main/tags:
+  # push:
+  #   tags:
+  #     - 'v*'
 
-  pull_request:
-    branches: [trunk]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Important: These permissions are required for OIDC
 permissions:
   contents: read
-  pages: write
   id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: 'pages'
-  cancel-in-progress: false
 
 jobs:
   publish:
-    name: 'Publish Library'
     runs-on: ubuntu-latest
+    # If you configured an environment in npm, specify it here:
+    environment: npm
+    
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm i
-      - run: npm run build
-      - uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+          registry-url: 'https://registry.npmjs.org'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build
+        run: npm run build
+      
+      - name: Publish to npm
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
