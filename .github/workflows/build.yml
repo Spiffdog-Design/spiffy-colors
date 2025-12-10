@@ -15,10 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
+      # DON'T use setup-node with registry-url for trusted publishing
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
       
       # CRITICAL: npm 11.5.1+ required for trusted publishing
       - name: Update npm
@@ -28,7 +28,6 @@ jobs:
         run: |
           npm --version
           echo "OIDC Token URL available: ${ACTIONS_ID_TOKEN_REQUEST_URL:+YES}"
-          echo "OIDC Token URL: ${ACTIONS_ID_TOKEN_REQUEST_URL:-NOT SET}"
       
       - name: Install dependencies
         run: npm ci
@@ -41,9 +40,6 @@ jobs:
           echo "Package name: $(node -p "require('./package.json').name")"
           echo "Package version: $(node -p "require('./package.json').version")"
       
-      - name: Debug - Dry run publish
-        run: npm publish --dry-run --access public
-        
       # NO NODE_AUTH_TOKEN, NO --provenance flag needed
       - name: Publish
-        run: npm publish --access public
+        run: npm publish --access public --registry https://registry.npmjs.org/
