@@ -12,8 +12,8 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    # If you configured an environment in npm, specify it here:
-    environment: npm
+    # Only include if you set an environment name in npm:
+    # environment: npm
     
     steps:
       - uses: actions/checkout@v4
@@ -30,4 +30,4 @@ jobs:
         run: npm run build
       
       - name: Publish to npm
-        run: npm publish --provenance --access public
+        run: npm publish --access public
