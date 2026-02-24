@@ -19,7 +19,7 @@ export const ThemeViewer = ({ themeName, theme }: ThemeViewerProps) => {
             }}
         >
             {Object.keys(theme).map((key) => (
-                <PaletteViewer themeName={themeName} name={key} palette={theme[key]} />
+                <PaletteViewer key={key} themeName={themeName} name={key} palette={theme[key]} />
             ))}
         </div>
     );

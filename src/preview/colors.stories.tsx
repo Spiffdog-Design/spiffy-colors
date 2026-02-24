@@ -25,5 +25,7 @@ export const Demo = {
         themeName: 'dark',
     },
 
-    render: (args: ThemeViewerProps) => <ThemeViewer themeName={args.themeName} theme={themes[`${args.themeName}`]} />,
+    render: (args: ThemeViewerProps) => (
+        <ThemeViewer key={args.themeName} themeName={args.themeName} theme={themes[`${args.themeName}`]} />
+    ),
 };

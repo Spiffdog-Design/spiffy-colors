@@ -21,7 +21,13 @@ export const PaletteViewer = ({ name, palette, themeName }: PaletteViewerProps) 
                 }}
             >
                 {Object.keys(palette).map((color: string, idx: number) => (
-                    <ColorViewer themeName={themeName} color={palette[Number(color)]} index={idx} name={name} />
+                    <ColorViewer
+                        key={`${name}-${color}`}
+                        themeName={themeName}
+                        color={palette[Number(color)]}
+                        index={idx}
+                        name={name}
+                    />
                 ))}
             </div>
         </div>

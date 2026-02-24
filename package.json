@@ -1,57 +1,68 @@
 {
-    "name": "@spiffdog/spiffy-colors",
-    "version": "2.0.1",
-    "main": "dist/index.js",
-    "module": "dist/index.mjs",
-    "types": "dist/types/index.d.ts",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Spiffdog-Design/spiffy-colors"
-    },
-    "scripts": {
-        "build": "npx rollup -c && npm run build-css-modules",
-        "build-css-modules": "node ./scripts/build-css-modules.js",
-        "clean": "git clean -fdX && npx rimraf ./dist",
-        "dev": "storybook dev -p 6006",
-        "prepublishOnly": "npm run build",
-        "build-storybook": "storybook build"
-    },
-    "keywords": [
-        "spiffdog",
-        "spiffy",
-        "colors"
-    ],
-    "sideEffects": false,
-    "publishConfig": {
-        "access": "public"
-    },
-    "devDependencies": {
-        "@chromatic-com/storybook": "^4.0.1",
-        "@rollup/plugin-typescript": "^8.2.1",
-        "@storybook/addon-a11y": "^9.0.14",
-        "@storybook/addon-docs": "^9.0.14",
-        "@storybook/addon-vitest": "^9.0.14",
-        "@storybook/react-vite": "^9.0.14",
-        "@types/node": "^20.11.1",
-        "@types/react": "^19.1.8",
-        "@types/react-dom": "^19.1.6",
-        "@vitest/browser": "^3.2.4",
-        "@vitest/coverage-v8": "^3.2.4",
-        "playwright": "^1.53.1",
-        "prop-types": "^15.8.1",
-        "rollup": "^2.48.0",
-        "rollup-plugin-scss": "^4.0.0",
-        "sass": "^1.77.8",
-        "storybook": "^9.0.14",
-        "tslib": "^2.2.0",
-        "typescript": "^4.2.4",
-        "vitest": "^3.2.4"
-    },
-    "dependencies": {
-        "@radix-ui/react-tooltip": "^1.2.7",
-        "@storybook/react": "^9.0.14",
-        "react": "^19.1.0",
-        "react-dom": "^19.1.0"
-    }
+  "name": "@spiffdog/spiffy-colors",
+  "version": "2.0.1",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Spiffdog-Design/spiffy-colors"
+  },
+  "scripts": {
+    "build": "npx rollup -c && npm run build-css-modules",
+    "build-css-modules": "node ./scripts/build-css-modules.js",
+    "clean": "git clean -fdX && npx rimraf ./dist",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation storybook dev -p 6006",
+    "prepublishOnly": "npm run build",
+    "build-storybook": "storybook build",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "spiffdog",
+    "spiffy",
+    "colors"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@chromatic-com/storybook": "^4.0.1",
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@storybook/addon-a11y": "^9.0.14",
+    "@storybook/addon-docs": "^9.0.14",
+    "@storybook/addon-vitest": "^9.0.14",
+    "@storybook/react-vite": "^9.0.14",
+    "@types/node": "^20.11.1",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitest/browser": "^3.2.4",
+    "@vitest/coverage-v8": "^3.2.4",
+    "cross-env": "^7.0.3",
+    "playwright": "^1.53.1",
+    "prop-types": "^15.8.1",
+    "rollup": "^2.48.0",
+    "rollup-plugin-scss": "^4.0.0",
+    "sass": "^1.77.8",
+    "storybook": "^9.0.14",
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "@radix-ui/react-tooltip": "^1.2.7",
+    "@storybook/react": "^9.0.14",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "vite": "^7.3.1"
+  }
 }
