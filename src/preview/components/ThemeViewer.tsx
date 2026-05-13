@@ -1,26 +1,28 @@
-import { Theme } from '../../types/Color';
+import { palette } from '../../palette';
+import { cssCustomPropertyName } from '../utility';
 import { PaletteViewer } from './PaletteViewer';
 
-export interface ThemeViewerProps {
-    themeName: string;
-    theme: Theme;
-}
-
-export const ThemeViewer = ({ themeName, theme }: ThemeViewerProps) => {
-    return (
-        <div
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 16,
-                padding: 16,
-                backgroundColor: theme.gray[12],
-                color: theme.gray[1],
-            }}
-        >
-            {Object.keys(theme).map((key) => (
-                <PaletteViewer key={key} themeName={themeName} name={key} palette={theme[key]} />
-            ))}
-        </div>
-    );
+export const ThemeViewer = () => {
+  return (
+    <div
+      style={{
+        colorScheme: 'light dark',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 16,
+        padding: 16,
+        backgroundColor: cssVarRef('gray', 12),
+        color: cssVarRef('gray', 1),
+      }}
+    >
+      {Object.keys(palette).map((key) => (
+        <PaletteViewer key={key} name={key} />
+      ))}
+    </div>
+  );
 };
+
+/** @param {string} paletteName @param {number} step */
+function cssVarRef(paletteName: string, step: number) {
+  return `var(${cssCustomPropertyName(paletteName, step)})`;
+}

@@ -1,31 +1,11 @@
-import { dark, light } from '../';
-
-import { Theme } from '../types/Color';
-import { ThemeViewer, ThemeViewerProps } from './components/ThemeViewer';
-
-const themes: Record<string, Theme> = {
-    dark: dark,
-    light: light,
-};
+import { ThemeViewer } from './components/ThemeViewer';
 
 const meta = {
-    title: 'Themes',
-    argTypes: {
-        themeName: {
-            options: ['dark', 'light'],
-            control: { type: 'radio' },
-        },
-    },
+  title: 'Themes',
 };
 
 export default meta;
 
 export const Demo = {
-    args: {
-        themeName: 'dark',
-    },
-
-    render: (args: ThemeViewerProps) => (
-        <ThemeViewer key={args.themeName} themeName={args.themeName} theme={themes[`${args.themeName}`]} />
-    ),
+  render: () => <ThemeViewer />,
 };

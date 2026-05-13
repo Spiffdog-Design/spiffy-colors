@@ -1,2 +1,1 @@
-export * from './dark';
-export * from './light';
+export { palette } from './palette';

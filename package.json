@@ -1,6 +1,6 @@
 {
     "name": "@spiffdog/spiffy-colors",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
     "types": "dist/types/index.d.ts",
@@ -10,7 +10,7 @@
         "url": "https://github.com/Spiffdog-Design/spiffy-colors"
     },
     "scripts": {
-        "build": "npx rollup -c && npm run build-css-modules",
+        "build": "node ./scripts/prune-dist-typings.js && npx rollup -c && npm run build-css-modules",
         "build-css-modules": "node ./scripts/build-css-modules.js",
         "clean": "git clean -fdX && npx rimraf ./dist",
         "dev": "cross-env NODE_OPTIONS=--no-deprecation storybook dev -p 6006",

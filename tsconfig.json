@@ -5,7 +5,8 @@
     "module": "esnext",
     "target": "ES2019",
     "lib": [
-      "esnext"
+      "esnext",
+      "dom"
     ],
     "jsx": "react-jsx",
     "declaration": true,
