@@ -7,6 +7,11 @@ const path = require('path');
 
 const dist = path.join(__dirname, '../dist');
 
+// Fresh clones / CI have no dist yet; rollup creates it. Nothing to prune.
+if (!fs.existsSync(dist)) {
+  process.exit(0);
+}
+
 function rm(p) {
   const full = path.join(dist, p);
   if (!fs.existsSync(full)) return;
