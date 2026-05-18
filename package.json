@@ -17,12 +17,12 @@
         "predev": "npm run build",
         "dev": "cross-env NODE_OPTIONS=--no-deprecation storybook dev -p 6006",
         "prepublishOnly": "npm run build",
-        "build-storybook": "storybook build",
-        "check": "biome check .",
-        "check:fix": "biome check --write .",
-        "format": "biome format --write .",
-        "lint": "biome lint .",
-        "lint:fix": "biome lint --write .",
+        "build-storybook": "npx storybook build",
+        "check": "npx @biomejs/biome check .",
+        "check:fix": "npx @biomejs/biome check --write .",
+        "format": "npx @biomejs/biome format --write .",
+        "lint": "npx @biomejs/biome lint .",
+        "lint:fix": "npx @biomejs/biome lint --write .",
         "test": "vitest run",
         "test:ui": "vitest --ui",
         "test:watch": "vitest"
@@ -37,7 +37,7 @@
         "access": "public"
     },
     "devDependencies": {
-        "@biomejs/biome": "^1.9.4",
+        "@biomejs/biome": "^2.4.13",
         "@chromatic-com/storybook": "^4.0.1",
         "@rollup/plugin-typescript": "^8.2.1",
         "@storybook/addon-a11y": "^9.0.14",
